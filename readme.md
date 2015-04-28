@@ -5,10 +5,18 @@ run code easily inside of headless electron (chromium) windows from the command 
 ## usage
 
 ```
-npm i electron-prebuilt -g
-npm i electron-spawn -g
-echo "console.log('hello')" | foo.js
-electron-spawn foo.js
+$ npm i electron-prebuilt -g
+$ npm i electron-spawn -g
+$ echo "console.log('hello')" | foo.js
+$ electron-spawn foo.js
+```
+
+you can also export a function that takes arguments to get all the arguments passed in to your program:
+
+```
+$ echo "module.exports = function (args) { console.log(args) }" | foo.js
+$ electron-spawn foo.js bar baz
+# outputs ['bar', 'baz']
 ```
 
 limitations:
