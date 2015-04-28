@@ -1,0 +1,20 @@
+{
+  "name": "electron-spawn",
+  "version": "1.0.0",
+  "description": "easy way to run code inside of a headless electron window from the CLI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "electron-spawn": "cli.js"
+  },
+  "keywords": [
+    "electron",
+    "atom",
+    "atom-shell",
+    "headless"
+  ],
+  "author": "max ogden",
+  "license": "BSD"
+}

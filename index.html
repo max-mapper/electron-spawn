@@ -1,0 +1,13 @@
+<html>
+<head>
+  <title>Electron</title>
+</head>
+<body>
+  <script>
+  var ipc = require('ipc')
+  ipc.on('module', function (name) {
+    require(name)
+  })
+  </script>
+</body>
+</html>
