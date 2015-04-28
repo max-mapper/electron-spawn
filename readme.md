@@ -14,7 +14,7 @@ $ electron-spawn foo.js
 you can also export a function that takes arguments to get all the arguments passed in to your program:
 
 ```
-$ echo "module.exports = function (args) { console.log(args) }" | foo.js
+$ echo "module.exports = function (args) { console.log(args) }" > foo.js
 $ electron-spawn foo.js bar baz
 # outputs ['bar', 'baz']
 ```
