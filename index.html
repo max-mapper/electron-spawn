@@ -5,8 +5,10 @@
 <body>
   <script>
   var ipc = require('ipc')
-  ipc.on('module', function (name) {
-    require(name)
+  var path = require('path')
+  ipc.on('args', function (args) {
+    var app = require(path.join(process.cwd(), args[2]))
+    if (typeof app === 'function') app(args.slice(2))
   })
   </script>
 </body>
