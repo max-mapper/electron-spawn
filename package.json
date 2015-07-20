@@ -16,7 +16,7 @@
     "headless"
   ],
   "author": "max ogden",
-  "license": "BSD",
+  "license": "BSD-2-Clause",
   "repository": {
     "type": "git",
     "url": "http://github.com/maxogden/electron-spawn.git"
