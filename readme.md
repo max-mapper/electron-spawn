@@ -19,6 +19,30 @@ $ electron-spawn foo.js bar baz
 # outputs ['bar', 'baz']
 ```
 
+## api
+
+### `var spawn = require('electron-spawn')`
+
+return a function that spawn electron
+
+### `var electron = spawn(scriptname[, params..., execOptions])`
+
+returns a child process running electron with the given `scriptname`
+
+`params` are a list of arguments passed to the process
+
+`execOptions` is an object literal to set options on how the process gets spawned
+
+```js
+var electronSpawn = require('electron-spawn')
+var electron = electronSpawn('foo.js', 'bar', 'baz', {
+  detached: true
+})
+electron.stderr.on('data', function (data) {
+  console.log(data.toString())
+})
+```
+
 limitations:
 
 - currently you have to globally install `electron`
