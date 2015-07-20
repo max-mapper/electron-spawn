@@ -4,7 +4,7 @@
   "description": "easy way to run code inside of a headless electron window from the CLI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard && node test.js"
   },
   "bin": {
     "electron-spawn": "cli.js"
@@ -20,5 +20,18 @@
   "repository": {
     "type": "git",
     "url": "http://github.com/maxogden/electron-spawn.git"
+  },
+  "standard": {
+    "ignore": [
+      "cli.js"
+    ]
+  },
+  "dependencies": {
+    "npm-execspawn": "^1.2.0"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^0.30.0",
+    "standard": "^4.5.4",
+    "tape": "^4.0.1"
   }
 }
