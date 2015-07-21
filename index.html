@@ -4,6 +4,8 @@
 </head>
 <body>
   <script>
+  // Needed to prevent logging out to Chrome
+  console.log = require('console').log
   var ipc = require('ipc')
   var path = require('path')
   ipc.on('args', function (args) {
