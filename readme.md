@@ -34,17 +34,28 @@ returns a child process running electron with the given `scriptname`
 `execOptions` is an object literal to set options on how the process gets spawned
 
 ```js
-var electronSpawn = require('electron-spawn')
-var electron = electronSpawn('foo.js', 'bar', 'baz', {
+var spawn = require('electron-spawn')
+var electron = spawn('foo.js', 'bar', 'baz', {
   detached: true
 })
 electron.stderr.on('data', function (data) {
+  console.error(data.toString())
+})
+electron.stdout.on('data', function (data) {
   console.log(data.toString())
 })
 ```
 
 limitations:
 
-- currently you have to globally install `electron`
-- cannot automatically yet exit your program like how node does when you have no more activity on the event loop
-- you will get weird stdout/stderr from electron. TODO figure out how to pass [logging disable flag](https://github.com/atom/electron/pull/1295)
+- cannot automatically yet exit your program like how node does when you have no more activity on the event loop  
+  But in your script you can call `require('remote').require('app').quit()` to quit when it's done:
+  ```js
+  module.exports = function (args) {
+    var img = new Image()
+    img.onload = function () {
+      require('remote').require('app').quit()
+    }
+    img.src = 'http://example.com/cat.gif'
+  }
+  ```
