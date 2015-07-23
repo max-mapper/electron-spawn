@@ -9,7 +9,12 @@
   var ipc = require('ipc')
   var path = require('path')
   ipc.on('args', function (args) {
-    var app = require(path.join(process.cwd(), args[2]))
+    var app
+    if (path.isAbsolute(args[2])) {
+      app = require(args[2])
+    } else {
+      app = require(path.join(process.cwd(), args[2]))
+    }
     if (typeof app === 'function') app(args.slice(2))
   })
   </script>
