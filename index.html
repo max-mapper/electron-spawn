@@ -4,8 +4,16 @@
 </head>
 <body>
   <script>
-  // Needed to prevent logging out to Chrome
+  // redirect log to stdout
   console.log = require('console').log
+
+  // redirect errors to stderr
+  window.addEventListener('error', function (e) {
+    e.preventDefault()
+    require('console').error(e.error.stack || 'Uncaught ' + e.error)
+    require('remote').require('app').quit()
+  })
+  
   var ipc = require('ipc')
   var path = require('path')
   ipc.on('args', function (args) {
