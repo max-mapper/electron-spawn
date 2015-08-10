@@ -11,7 +11,6 @@
   window.addEventListener('error', function (e) {
     e.preventDefault()
     require('console').error(e.error.stack || 'Uncaught ' + e.error)
-    require('remote').require('app').quit()
   })
   
   var ipc = require('ipc')
