@@ -6,7 +6,7 @@ var BrowserWindow = require('browser-window')
 app.on('ready', function () {
   win = new BrowserWindow({show: false})
   win.loadURL('file://' + path.join(__dirname, 'index.html')
-    + '#' + encodeURIComponent(JSON.stringify(process.argv)))
+    + '#' + encodeURIComponent(JSON.stringify(process.argv.slice(1))))
   win.webContents.on('did-finish-load', function() {
     win.webContents.send('args', process.argv)
   })
