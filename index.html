@@ -7,9 +7,6 @@
   // redirect log to stdout
   console.log = require('console').log
 
-  // set argv from the location hash
-  process.argv = JSON.parse(decodeURIComponent(location.hash.replace(/^#/,'')))
-
   // redirect errors to stderr
   window.addEventListener('error', function (e) {
     e.preventDefault()
@@ -19,6 +16,7 @@
   var ipc = require('ipc')
   var path = require('path')
   ipc.on('args', function (args) {
+    process.argv = args
     var app
     if (path.isAbsolute(args[2])) {
       app = require(args[2])
