@@ -19,6 +19,14 @@ $ electron-spawn foo.js bar baz
 # outputs ['bar', 'baz']
 ```
 
+or you can use `process.argv` like an ordinary node program:
+
+```
+$ echo 'console.log(process.argv.slice(2))' > hello.js
+$ electron-spawn hello.js beep boop
+# outputs: ['beep', 'boop']
+```
+
 ## api
 
 ### `var spawn = require('electron-spawn')`
