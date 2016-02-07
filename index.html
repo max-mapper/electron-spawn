@@ -25,6 +25,12 @@
     }
     if (typeof app === 'function') app(args.slice(2))
   })
+  process.stdin._read = function (n) {
+    ipc.send('stdin.read', n)
+  }
+  ipc.on('stdin.data', function (buf) {
+    process.stdin.push(buf)
+  })
   </script>
 </body>
 </html>

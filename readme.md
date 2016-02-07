@@ -27,6 +27,19 @@ $ electron-spawn hello.js beep boop
 # outputs: ['beep', 'boop']
 ```
 
+`process.stdin` works too:
+
+``` js
+process.stdin.on('data', function (buf) {
+  console.log('buf=', buf)
+})
+```
+
+```
+$ echo beep boop | electron-spawn stdin.js
+buf= <Buffer 62 65 65 70 20 62 6f 6f 70 0a>
+```
+
 ## api
 
 ### `var spawn = require('electron-spawn')`
