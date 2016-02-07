@@ -7,6 +7,9 @@
   // redirect log to stdout
   console.log = require('console').log
 
+  // set argv from the location hash
+  process.argv = JSON.parse(decodeURIComponent(location.hash.replace(/^#/,'')))
+
   // redirect errors to stderr
   window.addEventListener('error', function (e) {
     e.preventDefault()
