@@ -6,6 +6,7 @@
   <script>
   // redirect log to stdout
   console.log = require('console').log
+  process.exit = require('remote').require('app').quit
 
   // redirect errors to stderr
   window.addEventListener('error', function (e) {

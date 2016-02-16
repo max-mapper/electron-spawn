@@ -80,3 +80,5 @@ module.exports = function (args) {
   img.src = 'http://example.com/cat.gif'
 }
 ```
+
+or you can call `process.exit()` like an ordinary node program.
