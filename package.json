@@ -1,6 +1,6 @@
 {
   "name": "electron-spawn",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "easy way to run code inside of a headless electron window from the CLI",
   "main": "index.js",
   "scripts": {
