@@ -27,7 +27,7 @@
     ]
   },
   "dependencies": {
-    "electron-prebuilt": "^0.30.0",
+    "electron-prebuilt": "^1.0.1",
     "npm-execspawn": "^1.2.0"
   },
   "devDependencies": {

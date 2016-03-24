@@ -1,7 +1,7 @@
 if (process.versions['electron']) {
   module.exports = function (scripts) {
     console.log('test success: ' + scripts.join(','))
-    require('remote').require('app').quit()
+    require('electron').remote.app.quit()
   }
 } else {
   var test = require('tape')
