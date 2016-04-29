@@ -5,9 +5,19 @@ var app = require('app')
 var BrowserWindow = require('browser-window')
 var ipc = require('electron').ipcMain
 
+var getStartingHtmlFilePath = (filename) => {
+    if (filename) {
+        return `../../${filename}`;
+    }
+
+    return 'index.html';
+};
+
+var startingHtmlFilePath = getStartingHtmlFilePath(process.argv[3]);
+
 app.on('ready', function () {
   win = new BrowserWindow({show: false})
-  win.loadURL('file://' + path.join(__dirname, 'index.html'))
+  win.loadURL('file://' + path.join(__dirname, `${startingHtmlFilePath}`))
   win.webContents.on('did-finish-load', function() {
     win.webContents.send('args', process.argv)
   })
@@ -26,4 +36,3 @@ app.on('ready', function () {
     else reading = true
   }
 })
-
