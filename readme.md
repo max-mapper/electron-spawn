@@ -70,12 +70,12 @@ electron.stdout.on('data', function (data) {
 limitations:
 
 - cannot automatically yet exit your program like how node does when you have no more activity on the event loop  
-  But in your script you can call `require('remote').require('app').quit()` to quit when it's done:
+  But in your script you can call `require('electron').remote.app.quit()` to quit when it's done:
 ```js
 module.exports = function (args) {
   var img = new Image()
   img.onload = function () {
-    require('remote').require('app').quit()
+    require('electron').remote.app.quit()
   }
   img.src = 'http://example.com/cat.gif'
 }

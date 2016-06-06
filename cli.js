@@ -1,18 +1,16 @@
 #!/usr/bin/env electron
 
+var electron = require('electron')
 var path = require('path')
-var app = require('app')
-var BrowserWindow = require('browser-window')
-var ipc = require('electron').ipcMain
 
-app.on('ready', function () {
-  win = new BrowserWindow({show: false})
+electron.app.on('ready', function () {
+  var win = new electron.BrowserWindow({show: false})
   win.loadURL('file://' + path.join(__dirname, 'index.html'))
-  win.webContents.on('did-finish-load', function() {
+  win.webContents.on('did-finish-load', function () {
     win.webContents.send('args', process.argv)
   })
   var reading = false
-  ipc.on('stdin.read', onread)
+  electron.ipcMain.on('stdin.read', onread)
   process.stdin.on('readable', function () {
     if (reading) onread()
   })

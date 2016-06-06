@@ -4,19 +4,20 @@
 </head>
 <body>
   <script>
+  var electron = require('electron')
   // redirect log to stdout
-  console.log = require('console').log
-  process.exit = require('remote').require('app').quit
+  console.log = electron.remote.getGlobal('console').log
+  process.exit = electron.remote.app.quit
 
   // redirect errors to stderr
   window.addEventListener('error', function (e) {
     e.preventDefault()
-    require('console').error(e.error.stack || 'Uncaught ' + e.error)
+    console.error(e.error.stack || 'Uncaught ' + e.error)
   })
-  
-  var ipc = require('ipc')
+
+  var ipc = electron.ipcRenderer
   var path = require('path')
-  ipc.on('args', function (args) {
+  ipc.on('args', function (event, args) {
     process.argv = args.slice(1)
     var app
     if (path.isAbsolute(args[2])) {
