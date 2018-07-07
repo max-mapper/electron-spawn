@@ -27,11 +27,11 @@
     ]
   },
   "dependencies": {
-    "electron-prebuilt": "^1.0.1",
+    "electron": "^2.0.4",
     "npm-execspawn": "^1.2.0"
   },
   "devDependencies": {
-    "standard": "^4.5.4",
+    "standard": "^11.0.1",
     "tape": "^4.0.1"
   }
 }
